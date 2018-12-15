@@ -13,14 +13,22 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatChipsModule} from '@angular/material/chips';
 import { DataService } from './shared/data.service';
+import { RestaurantDetailComponent } from './restaurants/restaurant-detail/restaurant-detail.component';
+import { GeneralDetailsComponent } from './restaurants/restaurant-detail/general-details/general-details.component';
+import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/reviews.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RestaurantListComponent,
-    RestaurantListItemComponent
+    RestaurantListItemComponent,
+    RestaurantDetailComponent,
+    GeneralDetailsComponent,
+    ReviewsComponent
   ],
   imports: [
     CoreModule,
@@ -32,7 +40,9 @@ import { DataService } from './shared/data.service';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatChipsModule,
+    MatTabsModule
   ],
   providers: [RestaurantService, DataService],
   bootstrap: [AppComponent]

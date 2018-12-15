@@ -10,15 +10,17 @@
                                 <mat-card-title>{{ restaurant.name }}</mat-card-title>
                                   <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
                                 </mat-card-header>
-                                <img mat-card-image src="{{restaurant.image}}" alt="Restaurant Photo" height=300 width=300>
+                                <img mat-card-image src="{{restaurant.image}}" alt="Restaurant Photo" height=300>
                                 <mat-card-content>
                                   <p>
                                         {{ restaurant.address }}
                                   </p>
                                 </mat-card-content>
                                 <mat-card-actions>
-                                  <button mat-raised-button color="accent">VIEW</button>
+                                                <button mat-raised-button color="accent" [routerLink]="[index/general-details]">VIEW</button>                                                
+                                                <button class="pull-right" style="cursor: text" mat-raised-button color="primary">Cost for 2 : {{restaurant.cost}}</button>
                                 </mat-card-actions>
+                                
                         </mat-card>                                
                 </div>
         </div>

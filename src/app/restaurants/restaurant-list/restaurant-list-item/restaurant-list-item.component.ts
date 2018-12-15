@@ -13,7 +13,7 @@ export class RestaurantListItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.restaurant);
+    
   }
 
 }

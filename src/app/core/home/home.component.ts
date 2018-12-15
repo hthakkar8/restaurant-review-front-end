@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getRestaurants();
+    // this.dataService.getRestaurants();
   }
 
 }
