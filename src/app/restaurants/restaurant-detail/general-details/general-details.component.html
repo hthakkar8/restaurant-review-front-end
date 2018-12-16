@@ -1,3 +1,40 @@
-<p>
-  general-details works!
-</p>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>General Details</h4>
+          </mat-panel-title>                  
+        </mat-expansion-panel-header>
+        
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p><strong>Number</strong>  : {{restaurant.contact}}</p>
+            <p><strong>Email</strong>   : {{restaurant.email}}</p>
+            <p><strong>Address</strong> : {{restaurant.address}}</p>
+            <p><strong>Cost for 2</strong>     : {{restaurant.cost}}</p>
+          </div>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>Photos</h4>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>Menu</h4>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ngx-gallery [options]="galleryOptions" [images]="menuImages"></ngx-gallery>
+      </mat-expansion-panel>
+      </mat-accordion>
+  </div>
+</div>

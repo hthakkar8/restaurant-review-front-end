@@ -12,7 +12,8 @@ const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
     // {path: 'restaurants', component: RestaurantListComponent, canActivate: [AuthGuard]},
     {path: 'restaurants', component: RestaurantListComponent},
-    {path: 'restaurants/:id', component: RestaurantDetailComponent, children:[
+    {path: 'restaurants/:id', component: RestaurantDetailComponent, children:
+    [
         {path: 'general-details', component: GeneralDetailsComponent},
         {path: 'reviews', component: ReviewsComponent},
     ]},

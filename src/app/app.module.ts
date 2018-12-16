@@ -19,6 +19,8 @@ import { RestaurantDetailComponent } from './restaurants/restaurant-detail/resta
 import { GeneralDetailsComponent } from './restaurants/restaurant-detail/general-details/general-details.component';
 import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/reviews.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatIconModule,
     MatBadgeModule,
     MatChipsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatExpansionModule,
+    NgxGalleryModule
   ],
   providers: [RestaurantService, DataService],
   bootstrap: [AppComponent]
