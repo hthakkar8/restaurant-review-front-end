@@ -1,0 +1,15 @@
+<div class="row">
+  
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <form (ngSubmit)='onAddReview(f)' #f="ngForm">
+        <div class="form-group">
+          <label for="reviewdata">Write Your Review Below:</label>
+          <textarea name="reviewdata" id="reviewdata" class="form-control" rows="3" required="required" ngModel>
+          </textarea>
+        </div>
+        <button type="submit" class="btn btn-success"  [disabled]='!f.valid'>Submit Review</button>
+        
+      </form>
+    </div>
+</div>
+

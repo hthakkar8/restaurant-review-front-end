@@ -4,13 +4,15 @@ import { RestaurantService } from '../restaurants/restaurant.service';
 import { Restaurant } from '../restaurants/restaurant.model';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
+import { ReviewService } from '../restaurants/review.service';
+import { Review } from '../restaurants/review.model';
 
 
 @Injectable()
 
 export class DataService {
     constructor(private httpClient: HttpClient, private restaurantService: RestaurantService,
-                 private authService: AuthService) {}
+                 private authService: AuthService, private reviewService: ReviewService) {}
 
     getRestaurants() {
         const token = this.authService.getToken();
@@ -22,6 +24,36 @@ export class DataService {
         .subscribe(
             (restaurants: Restaurant[]) => {
                 this.restaurantService.setRestaurants(restaurants);
+            }
+        );
+    }
+
+    fetchReviews(publicid: string) {
+        const token = this.authService.getToken();
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', 'Bearer ' + token);
+        return this.httpClient.get<Review[]>('http://127.0.0.1:5000/getreviews/' + publicid, {
+            headers: headers
+        })
+        .subscribe(
+            (reviews: Review[]) => {
+                this.reviewService.setReviews(publicid, reviews);
+            }
+        );
+    }
+    postReview(reviewdata: string, publicid: string): any {
+        const token = this.authService.getToken();
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', 'Bearer ' + token);
+        return this.httpClient.post('http://127.0.0.1:5000/postreview', {
+            'reviewtext': reviewdata,
+            'restaurantid': publicid
+        }, {
+            headers: headers
+        })
+        .subscribe(
+            data => {
+                console.log(data);
             }
         );
     }

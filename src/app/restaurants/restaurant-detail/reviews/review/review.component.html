@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p><strong>{{review.username}} says :</strong></p>
+    <p>{{review.reviewtext}}</p>
+    <div class="well" *ngIf="review.isreplied">
+      <p><strong>Restaurant responded :</strong></p>
+      <p>{{review.responsetext}}</p>
+    </div>
+  </div>
+</div>

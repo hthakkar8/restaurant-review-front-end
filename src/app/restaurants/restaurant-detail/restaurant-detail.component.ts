@@ -2,6 +2,8 @@ import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Restaurant } from '../restaurant.model';
 import { RestaurantService } from '../restaurant.service';
+import { ReviewService } from '../review.service';
+import { DataService } from 'src/app/shared/data.service';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -12,12 +14,12 @@ export class RestaurantDetailComponent implements OnInit {
 
   restaurant: Restaurant;
   navLinks = [{path: 'general-details', label: 'Details'}, {path: 'reviews', label: 'Reviews'}];
-  constructor(private activatedRoute: ActivatedRoute, private restaurantService: RestaurantService) { }
+  constructor(private activatedRoute: ActivatedRoute, private restaurantService: RestaurantService,
+              private dataService: DataService) { }
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params['id'];
     this.restaurant = this.restaurantService.getRestaurant(id);
-
   }
 
 }

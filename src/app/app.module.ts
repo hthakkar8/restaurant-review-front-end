@@ -21,6 +21,10 @@ import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/review
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { ReviewService } from './restaurants/review.service';
+import { ReviewComponent } from './restaurants/restaurant-detail/reviews/review/review.component';
+import { AddReviewComponent } from './restaurants/restaurant-detail/reviews/add-review/add-review.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import { NgxGalleryModule } from 'ngx-gallery';
     RestaurantListItemComponent,
     RestaurantDetailComponent,
     GeneralDetailsComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    ReviewComponent,
+    AddReviewComponent
   ],
   imports: [
     CoreModule,
@@ -46,9 +52,10 @@ import { NgxGalleryModule } from 'ngx-gallery';
     MatChipsModule,
     MatTabsModule,
     MatExpansionModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    FormsModule
   ],
-  providers: [RestaurantService, DataService],
+  providers: [RestaurantService, DataService, ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
