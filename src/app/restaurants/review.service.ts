@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 @Injectable()
 export class ReviewService {
-    // reviews: {[key: string]: Review[]};
+    reviews: {[key: string]: Review[]};
     reviewStreams: {[key: string]: Subject<Review[]>};
     constructor() {
-        // this.reviews = {};
+        this.reviews = {};
         this.reviewStreams = {};
     }
 
@@ -20,9 +20,14 @@ export class ReviewService {
         }
     }
 
+    getReview(publicid: string, index: number) {
+        return this.reviews[publicid][index];
+    }
+
     setReviews(publicid: string, reviews: Review[]) {
         if (this.reviewStreams.hasOwnProperty(publicid)) {
             this.reviewStreams[publicid].next(reviews);
+            this.reviews[publicid] = reviews;
         }
     }
 }

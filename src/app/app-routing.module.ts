@@ -7,6 +7,7 @@ import { RestaurantDetailComponent } from './restaurants/restaurant-detail/resta
 import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/reviews.component';
 import { GeneralDetailsComponent } from './restaurants/restaurant-detail/general-details/general-details.component';
 import { AddReviewComponent } from './restaurants/restaurant-detail/reviews/add-review/add-review.component';
+import { AddResponseComponent } from './restaurants/restaurant-detail/reviews/add-response/add-response.component';
 
 const appRoutes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
         {path: 'general-details', component: GeneralDetailsComponent},
         {path: 'reviews', component: ReviewsComponent},
         {path: 'reviews/addreview', component: AddReviewComponent},
+        {path: 'reviews/addresponse', component: AddResponseComponent},
     ]},
 ];
 

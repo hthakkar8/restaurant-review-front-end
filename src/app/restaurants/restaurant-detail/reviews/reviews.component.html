@@ -1,8 +1,11 @@
 
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <button type="button" [routerLink]="['addreview']" class="btn btn-primary review-btn">Add Review</button>
-    <app-review *ngFor="let review of reviews" [review]="review"></app-review>    
+    <button type="button" [routerLink]="['addreview']" class="btn btn-primary review-btn"
+    *ngIf="!isOwner">
+    Add Review</button>
+    <app-review *ngFor="let review of reviews; let i = index" [review]="review" [isOwner]="isOwner" 
+    [isAdmin]="isAdmin" [index]='i'></app-review>    
   </div>
 </div>
 

@@ -57,4 +57,34 @@ export class DataService {
             }
         );
     }
+    getRestaurant(restaurantID: string) {
+        const token = this.authService.getToken();
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', 'Bearer ' + token);
+        return this.httpClient.get<Restaurant>('http://127.0.0.1:5000/getrestaurant/' + restaurantID, {
+            headers: headers
+        })
+        .subscribe(
+            (restaurant: Restaurant) => {
+                this.restaurantService.addRestaurant(restaurant);
+            }
+        );
+    }
+
+    postReviewResponse(responsedata: any, reviewid: string) {
+        const token = this.authService.getToken();
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', 'Bearer ' + token);
+        return this.httpClient.post('http://127.0.0.1:5000/postresponse', {
+            'responsetext': responsedata,
+            'reviewid': reviewid
+        }, {
+            headers: headers
+        })
+        .subscribe(
+            data => {
+                console.log(data);
+            }
+        );
+      }
 }

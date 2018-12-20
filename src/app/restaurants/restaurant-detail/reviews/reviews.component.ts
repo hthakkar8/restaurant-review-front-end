@@ -5,6 +5,7 @@ import { RestaurantService } from '../../restaurant.service';
 import { ReviewService } from '../../review.service';
 import { Review } from '../../review.model';
 import { DataService } from 'src/app/shared/data.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-reviews',
@@ -15,8 +16,10 @@ export class ReviewsComponent implements OnInit {
 
   restaurant: Restaurant;
   reviews: Review[];
+  isOwner: boolean;
+  isAdmin: boolean;
   constructor(private activatedRoute: ActivatedRoute, private restaurantService: RestaurantService,
-    private reviewService: ReviewService, private dataService: DataService) { }
+    private reviewService: ReviewService, private dataService: DataService, private authService: AuthService) { }
   ngOnInit() {
     const id = this.activatedRoute.parent.snapshot.params['id'];
     this.restaurant = this.restaurantService.getRestaurant(id);
@@ -26,6 +29,8 @@ export class ReviewsComponent implements OnInit {
         this.reviews = reviews;
       }
     );
+    this.isAdmin = this.authService.checkIfAdmin();
+    this.isOwner = this.authService.checkIfOwner().owner;
   }
 
 }

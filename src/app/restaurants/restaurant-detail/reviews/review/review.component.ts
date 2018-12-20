@@ -10,6 +10,9 @@ import { Review } from 'src/app/restaurants/review.model';
 export class ReviewComponent implements OnInit {
 
   @Input() review: Review;
+  @Input() isOwner: boolean;
+  @Input() isAdmin: boolean;
+  @Input() index: number;
   constructor() { }
 
   ngOnInit() {
