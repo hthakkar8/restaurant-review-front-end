@@ -13,6 +13,8 @@
     <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active"><a routerLink="/restaurants" *ngIf="isAuthenticated()">Restaurants</a></li>
+        <li routerLinkActive="active"><a routerLink="/addrestaurant" *ngIf="isAuthenticated() && authService.checkIfAdmin()">
+          Add Restaurant</a></li>
         <!-- <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">

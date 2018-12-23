@@ -26,6 +26,7 @@ import { ReviewComponent } from './restaurants/restaurant-detail/reviews/review/
 import { AddReviewComponent } from './restaurants/restaurant-detail/reviews/add-review/add-review.component';
 import { FormsModule } from '@angular/forms';
 import { AddResponseComponent } from './restaurants/restaurant-detail/reviews/add-response/add-response.component';
+import { AddRestaurantComponent } from './admin/add-restaurant/add-restaurant.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { AddResponseComponent } from './restaurants/restaurant-detail/reviews/ad
     ReviewsComponent,
     ReviewComponent,
     AddReviewComponent,
-    AddResponseComponent
+    AddResponseComponent,
+    AddRestaurantComponent
   ],
   imports: [
     CoreModule,

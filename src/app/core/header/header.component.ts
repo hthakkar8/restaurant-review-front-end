@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
+import { RestaurantService } from 'src/app/restaurants/restaurant.service';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +13,10 @@ export class HeaderComponent {
         let bool = this.isIn;
         this.isIn = bool === false ? true : false;
     }
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private restaurantService: RestaurantService) {
   }
   onLogout() {
+    this.restaurantService.setRestaurants([]);
     this.authService.logout();
   }
 

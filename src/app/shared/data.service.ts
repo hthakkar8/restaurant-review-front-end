@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
 import { ReviewService } from '../restaurants/review.service';
 import { Review } from '../restaurants/review.model';
+import { User } from './user.model';
 
 
 @Injectable()
@@ -41,7 +42,7 @@ export class DataService {
             }
         );
     }
-    postReview(reviewdata: string, publicid: string): any {
+    postReview(reviewdata: string, publicid: string) {
         const token = this.authService.getToken();
         let headers = new HttpHeaders();
         headers = headers.set('Authorization', 'Bearer ' + token);
@@ -86,5 +87,39 @@ export class DataService {
                 console.log(data);
             }
         );
+      }
+
+      fetchUsers() {
+        const token = this.authService.getToken();
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', 'Bearer ' + token);
+        return this.httpClient.get<User[]>('http://127.0.0.1:5000/getallusers', {
+            headers: headers
+        });
+      }
+
+      addRestaurant(name: string, email: string, address: string, contact: string,
+                    owner: string, cost: number, menu: string, image: string, rating: number) {
+            const token = this.authService.getToken();
+            let headers = new HttpHeaders();
+            headers = headers.set('Authorization', 'Bearer ' + token);
+            return this.httpClient.post('http://127.0.0.1:5000/addrestaurant', {
+                'name': name,
+                'email': email,
+                'address': address,
+                'contact': contact,
+                'owner': owner,
+                'cost': cost,
+                'menu': menu,
+                'image': image,
+                'rating': rating
+            }, {
+                headers: headers
+            })
+            .subscribe(
+                data => {
+                    console.log(data);
+                }
+            );
       }
 }

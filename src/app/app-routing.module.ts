@@ -8,11 +8,13 @@ import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/review
 import { GeneralDetailsComponent } from './restaurants/restaurant-detail/general-details/general-details.component';
 import { AddReviewComponent } from './restaurants/restaurant-detail/reviews/add-review/add-review.component';
 import { AddResponseComponent } from './restaurants/restaurant-detail/reviews/add-response/add-response.component';
+import { AddRestaurantComponent } from './admin/add-restaurant/add-restaurant.component';
 
 const appRoutes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'restaurants', component: RestaurantListComponent, canActivate: [AuthGuard]},
+    {path: 'addrestaurant', component: AddRestaurantComponent, canActivate: [AuthGuard]},
     // {path: 'restaurants', component: RestaurantListComponent},
     // {path: 'restaurants/:id', component: RestaurantDetailComponent, canActivate: [AuthGuard], children:
     {path: 'restaurants/:id', component: RestaurantDetailComponent, canActivate: [AuthGuard], children:
