@@ -10,5 +10,9 @@
   <div class="panel-footer" *ngIf="isOwner">
     <button type="button" class="btn btn-primary" [routerLink]="[ 'addresponse']" 
     [queryParams]='{id:index}'> {{ review.isreplied ? 'Edit Reply' : 'Add Reply'}}</button>
+  </div>
+  <div class="panel-footer" *ngIf="isAdmin">
+    <button type="button" class="btn btn-danger" (click)='onDelete()'> 
+      {{ 'Delete' }}</button>
   </div> 
 </div>

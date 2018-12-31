@@ -15,6 +15,21 @@ export class DataService {
     constructor(private httpClient: HttpClient, private restaurantService: RestaurantService,
                  private authService: AuthService, private reviewService: ReviewService) {}
 
+    deleteReview(reviewid: string) {
+        const token = this.authService.getToken();
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', 'Bearer ' + token);
+        return this.httpClient.post('http://127.0.0.1:5000/deletereview', {
+            'reviewid': reviewid
+        }, {
+            headers: headers
+        })
+        .subscribe(
+            data => {
+                console.log(data);
+            }
+        );
+    }
     getRestaurants() {
         const token = this.authService.getToken();
         let headers = new HttpHeaders();

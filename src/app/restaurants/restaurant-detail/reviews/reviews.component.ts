@@ -6,6 +6,7 @@ import { ReviewService } from '../../review.service';
 import { Review } from '../../review.model';
 import { DataService } from 'src/app/shared/data.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-reviews',
@@ -18,9 +19,10 @@ export class ReviewsComponent implements OnInit {
   reviews: Review[];
   isOwner: boolean;
   isAdmin: boolean;
+  deleteReview: Subject<number>;
   constructor(private activatedRoute: ActivatedRoute, private restaurantService: RestaurantService,
     private reviewService: ReviewService, private dataService: DataService, private authService: AuthService) { }
-  ngOnInit() {
+    ngOnInit() {
     const id = this.activatedRoute.parent.snapshot.params['id'];
     this.restaurant = this.restaurantService.getRestaurant(id);
     this.dataService.fetchReviews(this.restaurant.publicid);
@@ -31,6 +33,13 @@ export class ReviewsComponent implements OnInit {
     );
     this.isAdmin = this.authService.checkIfAdmin();
     this.isOwner = this.authService.checkIfOwner().owner;
+    this.deleteReview = new Subject<number>();
+    this.deleteReview.subscribe(
+      (reviewid: number) => {
+        this.reviewService.deleteReview(this.restaurant.publicid, reviewid);
+        this.dataService.fetchReviews(this.restaurant.publicid);
+      }
+    );
   }
 
 }

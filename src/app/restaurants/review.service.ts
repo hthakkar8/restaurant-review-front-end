@@ -24,6 +24,10 @@ export class ReviewService {
         return this.reviews[publicid][index];
     }
 
+    deleteReview(publicid: string, index: number) {
+        return this.reviews[publicid].splice(index, 1);
+    }
+
     setReviews(publicid: string, reviews: Review[]) {
         if (this.reviewStreams.hasOwnProperty(publicid)) {
             this.reviewStreams[publicid].next(reviews);
