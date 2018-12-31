@@ -1,4 +1,7 @@
 <h2>{{restaurant.name}}</h2>
+
+<button type="button" class="btn btn-danger" (click)="onDelete()">Delete Restaurant</button>
+
 <nav mat-tab-nav-bar>
     <a mat-tab-link 
        *ngFor="let link of navLinks"

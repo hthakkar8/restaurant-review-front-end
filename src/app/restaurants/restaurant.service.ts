@@ -1,6 +1,7 @@
 import { Restaurant } from './restaurant.model';
 
 export class RestaurantService {
+
     restaurants: Restaurant[] = [
         // new Restaurant('Hotel Zoe', 'Mathurdas Mills Compound, N.M Joshi Marg, Lower Parel, Mumbai, Maharashtra 400013'
         // , '9855500078', 4.2, 'zoe@hotel.com', 'https://imageshack.com/a/img673/9459/xTpXO8.jpg', 
@@ -30,5 +31,8 @@ export class RestaurantService {
     }
     addRestaurant(restaurant: Restaurant) {
         this.restaurants.push(restaurant);
+    }
+    deleteRestaurant(publicid: string) {
+       this.restaurants.splice(this.restaurants.findIndex(restaurant => restaurant.publicid === publicid), 1);
     }
 }

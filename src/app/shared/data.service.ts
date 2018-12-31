@@ -30,6 +30,23 @@ export class DataService {
             }
         );
     }
+
+    deleteRestaurant(publicid: string) {
+        const token = this.authService.getToken();
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', 'Bearer ' + token);
+        return this.httpClient.post('http://127.0.0.1:5000/deleterestaurant', {
+            'restaurantpublicid': publicid
+        }, {
+            headers: headers
+        })
+        .subscribe(
+            data => {
+                console.log(data);
+                this.restaurantService.deleteRestaurant(publicid);
+            }
+        );
+      }
     getRestaurants() {
         const token = this.authService.getToken();
         let headers = new HttpHeaders();
