@@ -27,6 +27,10 @@ import { AddReviewComponent } from './restaurants/restaurant-detail/reviews/add-
 import { FormsModule } from '@angular/forms';
 import { AddResponseComponent } from './restaurants/restaurant-detail/reviews/add-response/add-response.component';
 import { AddRestaurantComponent } from './admin/add-restaurant/add-restaurant.component';
+import { AddTemplatesComponent } from './admin/add-templates/add-templates.component';
+import { ViewTemplatesComponent } from './admin/view-templates/view-templates.component';
+import { TemplateItemComponent } from './admin/view-templates/template-item/template-item.component';
+import { TemplateService } from './admin/view-templates/template-service.service';
 
 
 @NgModule({
@@ -40,7 +44,10 @@ import { AddRestaurantComponent } from './admin/add-restaurant/add-restaurant.co
     ReviewComponent,
     AddReviewComponent,
     AddResponseComponent,
-    AddRestaurantComponent
+    AddRestaurantComponent,
+    AddTemplatesComponent,
+    ViewTemplatesComponent,
+    TemplateItemComponent
   ],
   imports: [
     CoreModule,
@@ -59,7 +66,7 @@ import { AddRestaurantComponent } from './admin/add-restaurant/add-restaurant.co
     NgxGalleryModule,
     FormsModule
   ],
-  providers: [RestaurantService, DataService, ReviewService],
+  providers: [RestaurantService, DataService, ReviewService, TemplateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,14 +7,54 @@ import { AuthService } from '../auth/auth.service';
 import { ReviewService } from '../restaurants/review.service';
 import { Review } from '../restaurants/review.model';
 import { User } from './user.model';
+import { Template } from '../admin/view-templates/template.model';
+import { TemplateService } from '../admin/view-templates/template-service.service';
 
 
 @Injectable()
 
 export class DataService {
+  
     constructor(private httpClient: HttpClient, private restaurantService: RestaurantService,
-                 private authService: AuthService, private reviewService: ReviewService) {}
+                 private authService: AuthService, private reviewService: ReviewService,
+                 private templateService: TemplateService) {}
 
+    addTemplate(templatetext: string, food: number, service: number, ambience: number,
+                overall: number, contains: number) {
+        const token = this.authService.getToken();
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', 'Bearer ' + token);
+        return this.httpClient.post('http://127.0.0.1:5000/addtemplate', {
+            'templatetext': templatetext,
+            'food': food,
+            'service': service,
+            'ambience': ambience,
+            'overall': overall,
+            'contains': contains
+        }, {
+            headers: headers
+        })
+        .subscribe(
+            data => {
+                console.log(data);
+            }
+        );
+    }
+    deleteTemplate(id: number) {
+        const token = this.authService.getToken();
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', 'Bearer ' + token);
+        return this.httpClient.post('http://127.0.0.1:5000/deletetemplate', {
+            'templateid': id
+        }, {
+            headers: headers
+        })
+        .subscribe(
+            data => {
+                console.log(data);
+            }
+        );
+      }
     deleteReview(reviewid: string) {
         const token = this.authService.getToken();
         let headers = new HttpHeaders();
@@ -57,6 +97,20 @@ export class DataService {
         .subscribe(
             (restaurants: Restaurant[]) => {
                 this.restaurantService.setRestaurants(restaurants);
+            }
+        );
+    }
+
+    getTemplates() {
+        const token = this.authService.getToken();
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', 'Bearer ' + token);
+        return this.httpClient.get<Template[]>('http://127.0.0.1:5000/getalltemplates', {
+            headers: headers
+        })
+        .subscribe(
+            (templates: Template[]) => {
+                this.templateService.setTemplates(templates);
             }
         );
     }

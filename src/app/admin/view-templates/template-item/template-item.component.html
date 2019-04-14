@@ -1,0 +1,25 @@
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        
+  <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <mat-card class="restaurant-card">
+                          <mat-card-header>
+                          <mat-card-title>Template {{index+1}}</mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content>
+                            <p>
+                                  {{ template.text }}
+                            </p>
+                            <p>Food : {{foodString}}</p>
+                            <p>Service : {{serviceString}}</p>
+                            <p>Ambience : {{ambienceString}}</p>
+                          </mat-card-content>
+                          <mat-card-actions>
+                                <button mat-raised-button color="danger" (click)="onDelete()">DELETE</button>
+                          </mat-card-actions>
+                          
+                  </mat-card>                                
+          </div>
+  </div>
+  
+</div>

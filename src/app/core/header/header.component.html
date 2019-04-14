@@ -15,6 +15,10 @@
         <li routerLinkActive="active"><a routerLink="/restaurants" *ngIf="isAuthenticated()">Restaurants</a></li>
         <li routerLinkActive="active"><a routerLink="/addrestaurant" *ngIf="isAuthenticated() && authService.checkIfAdmin()">
           Add Restaurant</a></li>
+        <li routerLinkActive="active"><a routerLink="/addtemplate" *ngIf="isAuthenticated() && authService.checkIfAdmin()">
+          Add Template</a></li>
+          <li routerLinkActive="active"><a routerLink="/viewtemplates" *ngIf="isAuthenticated() && authService.checkIfAdmin()">
+            View Templates</a></li>
         <!-- <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">

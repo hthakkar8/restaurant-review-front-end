@@ -9,12 +9,16 @@ import { GeneralDetailsComponent } from './restaurants/restaurant-detail/general
 import { AddReviewComponent } from './restaurants/restaurant-detail/reviews/add-review/add-review.component';
 import { AddResponseComponent } from './restaurants/restaurant-detail/reviews/add-response/add-response.component';
 import { AddRestaurantComponent } from './admin/add-restaurant/add-restaurant.component';
+import { AddTemplatesComponent } from './admin/add-templates/add-templates.component';
+import { ViewTemplatesComponent } from './admin/view-templates/view-templates.component';
 
 const appRoutes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'restaurants', component: RestaurantListComponent, canActivate: [AuthGuard]},
     {path: 'addrestaurant', component: AddRestaurantComponent, canActivate: [AuthGuard]},
+    {path: 'addtemplate', component: AddTemplatesComponent, canActivate: [AuthGuard]},
+    {path: 'viewtemplates', component: ViewTemplatesComponent, canActivate: [AuthGuard]},
     // {path: 'restaurants', component: RestaurantListComponent},
     // {path: 'restaurants/:id', component: RestaurantDetailComponent, canActivate: [AuthGuard], children:
     {path: 'restaurants/:id', component: RestaurantDetailComponent, canActivate: [AuthGuard], children:

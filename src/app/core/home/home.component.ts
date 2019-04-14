@@ -18,5 +18,9 @@ export class HomeComponent implements OnInit {
     } else {
       this.dataService.getRestaurants();
     }
+    const adminCheck = this.authService.checkIfAdmin();
+    if (adminCheck) {
+      this.dataService.getTemplates();
+   }
   }
 }
