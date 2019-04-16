@@ -32,7 +32,7 @@ export class AddRestaurantComponent implements OnInit {
     const cost = +form.value.cost;
     const menu = ' ';
     const image = ' ';
-    const rating = 0.0;
+    const rating = form.value.star;
     this.dataService.addRestaurant(name, email, address, contact, owner, cost, menu, image, rating);
     this.router.navigate(['../'], {relativeTo: this.activatedRoute});
   }

@@ -7,13 +7,13 @@
     
       <div class="form-group">
         <label for="templatetext">Template Text</label>
-        <textarea name="templatetext" id="templatetext" class="form-control" rows="3" placeholder="Enter Template Text" ngModel></textarea>
+        <textarea name="templatetext" id="templatetext" class="form-control" rows="3" placeholder="Enter Template Text" ngModel required></textarea>
       </div>
 
       <div class="form-group">
         <label for="food">Food</label>
         
-        <select name="food" id="food" class="form-control" ngModel>
+        <select name="food" id="food" class="form-control" ngModel required>
           <option value="0">Neutral</option>
           <option value="1">Positive</option>
           <option value="-1">Negative</option>
@@ -24,7 +24,7 @@
       <div class="form-group">
         <label for="service">Service</label>
         
-        <select name="service" id="service" class="form-control" ngModel>
+        <select name="service" id="service" class="form-control" ngModel required>
           <option value="0">Neutral</option>
           <option value="1">Positive</option>
           <option value="-1">Negative</option>
@@ -34,7 +34,7 @@
       <div class="form-group">
         <label for="ambience">Ambience</label>
         
-        <select name="ambience" id="ambience" class="form-control" ngModel>
+        <select name="ambience" id="ambience" class="form-control" ngModel required>
           <option value="0">Neutral</option>
           <option value="1">Positive</option>
           <option value="-1">Negative</option>
@@ -42,7 +42,7 @@
         
       </div>
        
-      <button type="submit" class="btn btn-primary">Add</button>
+      <button type="submit" class="btn btn-primary" [disabled]='!f.valid'>Add</button>
     </form>
         
   </div>

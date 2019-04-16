@@ -7,39 +7,93 @@
     
       <div class="form-group">
         <label for="name">Restaurant Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Restaurant Name" ngModel>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Restaurant Name" ngModel #name="ngModel" required>
       </div>
-    
+      <div *ngIf="name.invalid && (name.dirty || name.touched)"  class="alert alert-danger">
+          <div *ngIf="name.errors.required">
+            Name is required.
+          </div>
+      </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" ngModel>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" ngModel #email="ngModel" required email>
       </div>
-
+      <div *ngIf="email.invalid && (email.dirty || email.touched)"  class="alert alert-danger">
+        <div *ngIf="email.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="name.errors.email">
+          Enter Valid Email
+        </div>
+    </div>
       <div class="form-group">
         <label for="address">Address</label>
-        <textarea name="address" id="address" class="form-control" rows="3" placeholder="Enter Address" ngModel></textarea>
+        <textarea name="address" id="address" class="form-control" rows="3" placeholder="Enter Address" ngModel required
+        #address="ngModel"
+        ></textarea>
+        
       </div>
-    
+      <div *ngIf="address.invalid && (address.dirty || address.touched)"  class="alert alert-danger">
+        <div *ngIf="address.errors.required">
+          Address is required.
+        </div>
+    </div>
       <div class="form-group">
         <label for="number">Phone Number</label>
-        <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter Number" ngModel>
+        <input type="text" class="form-control" id="contact" name="contact" pattern="^[0-9]*$" placeholder="Enter Number" ngModel #contact="ngModel" required minlength=10 maxlength=10>
+        <div *ngIf="contact.invalid && (contact.dirty || contact.touched)"  class="alert alert-danger">
+          <div *ngIf="contact.errors.required">
+            Phone Number is required.
+          </div>
+          <div *ngIf="contact.errors.minlength || contact.errors.maxlength || contact.errors.pattern" >
+            Enter valid phone number.
+          </div>
+          <!-- <div *ngIf=" " >
+            Enter valid phone number.
+          </div> -->
+      </div>
       </div>
 
       <div class="form-group">
         <label for="cost">Cost</label>
-        <input type="number" class="form-control" id="cost" name="cost" placeholder="Enter Cost for 2" ngModel>
+        <input type="text" class="form-control" id="cost" name="cost" placeholder="Enter Cost for 2" ngModel #cost="ngModel" required pattern="^[1-9][0-9]*$">
+      </div>
+      <div *ngIf="cost.invalid && (cost.dirty || cost.touched)"  class="alert alert-danger">
+          <div *ngIf="cost.errors.required">
+            Cost is required.
+          </div>
+          <div *ngIf="cost.errors.pattern">
+            Cost must be greater than 0
+          </div>
       </div>
 
       <div class="form-group">
+        <label for="star">Stars</label>
+        <input type="text" class="form-control" id="star" name="star" placeholder="Enter Stars of Restaurant" ngModel #star="ngModel" required pattern="^[1-9]0{0,1}$">
+      </div>
+      <div *ngIf="star.invalid && (star.dirty || star.touched)"  class="alert alert-danger">
+          <div *ngIf="star.errors.required">
+            Stars are required
+          </div>
+          <div *ngIf="star.errors.pattern">
+            Enter a number between 1-10
+          </div>
+      </div>
+      <div class="form-group">
         <label for="owner">Owner</label>
         
-        <select name="owner" id="owner" class="form-control" ngModel>
+        <select name="owner" id="owner" class="form-control" ngModel required #owner="ngModel">
           <option *ngFor="let user of users" [value]="user.publicid">{{user.name}} - {{user.email}}</option>
         </select>
         
       </div>
+      <div *ngIf="owner.invalid && (owner.dirty || owner.touched)"  class="alert alert-danger">
+        <div *ngIf="owner.errors.required">
+          Owner must be selected
+        </div>
+    </div>
       
-      <button type="submit" class="btn btn-primary">Add</button>
+      <button type="submit" class="btn btn-primary" [disabled]='!f.valid'>Add</button>
     </form>
         
   </div>
