@@ -22,7 +22,7 @@
         <div *ngIf="email.errors.required">
           Email is required.
         </div>
-        <div *ngIf="name.errors.email">
+        <div *ngIf="email.errors.email">
           Enter Valid Email
         </div>
     </div>
@@ -63,7 +63,7 @@
             Cost is required.
           </div>
           <div *ngIf="cost.errors.pattern">
-            Cost must be greater than 0
+            Cost must be a valid number greater than 0
           </div>
       </div>
 

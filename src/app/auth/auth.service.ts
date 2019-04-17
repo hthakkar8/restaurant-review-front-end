@@ -35,6 +35,10 @@ export class AuthService {
                 this.isOwner = response.isowner;
                 this.restaurantID = response.restaurantpublicid;
                 this.router.navigate(['/']);
+            },
+            (err) => {
+                console.log(err);
+                alert('Invalid Credentials');
             }
         );
     }
